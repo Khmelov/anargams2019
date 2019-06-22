@@ -7,14 +7,14 @@ import java.util.Set;
 class SolutionSimple {
     Collection collectAnagrams(String[] dictionary, String word) {
         if (word.indexOf(' ')>=0)
-            return biuldPhrase(dictionary,word);
+            return buildPhrase(dictionary,word);
         long pw = 31;
         long sw = 0;
         long p;
         long s;
         Set<String> res = new HashSet<>();
 
-        //bytes faster chars, but the solve depends Caps
+        //bytes are faster than chars, but the decision is case sensitive
         byte[] array = word.getBytes();
         for (byte b : array) {
             pw *= b; //ok, but 8*2=4*4
@@ -41,7 +41,7 @@ class SolutionSimple {
     }
 
     @SuppressWarnings("all")
-    private Collection biuldPhrase(String[] dictionary, String phrase) {
+    private Collection buildPhrase(String[] dictionary, String phrase) {
         String[] words = phrase.split(" ", 2);
         Collection first = collectAnagrams(dictionary, words[0]);
         Collection second = collectAnagrams(dictionary, words[1]); //тут двойная рекурсия
