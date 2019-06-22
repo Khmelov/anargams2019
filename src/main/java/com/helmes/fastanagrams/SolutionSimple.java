@@ -14,11 +14,10 @@ class SolutionSimple {
         long s;
         Set<String> res = new HashSet<>();
 
-        //bytes are faster than chars, but the decision is case sensitive
-        byte[] array = word.getBytes();
-        for (byte b : array) {
-            pw *= b; //ok, but 8*2=4*4
-            sw += b; //fix: 8+2!=4+4
+        char[] array = word.toCharArray();
+        for (char c : array) {
+            pw *= c; //ok, but 8*2=4*4
+            sw += c; //fix: 8+2!=4+4
         }
         int length = word.length();
 
@@ -26,10 +25,10 @@ class SolutionSimple {
             if (w.length() == length) {
                 p = 31;
                 s = 0;
-                array = w.getBytes();
-                for (byte b : array) {
-                    p *= b;
-                    s += b;
+                array = w.toCharArray();
+                for (char c : array) {
+                    p *= c;
+                    s += c;
                 }
                 //detect anargam
                 if (p == pw && s == sw) {
