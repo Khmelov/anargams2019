@@ -101,11 +101,12 @@ public class Solution {
 
     private Set<String> smartCollect(String[] dictionary, String search) {
         final int BUILD_AFTER_COUNT = 3;
-        counter++;
         if (dictionary != prevDictionary) {
             counter = 0;
             prevDictionary = dictionary;
+            return null;
         }
+        counter++;
         if (counter > BUILD_AFTER_COUNT) {
             counter = BUILD_AFTER_COUNT;
             return cache.get(getId(search));
